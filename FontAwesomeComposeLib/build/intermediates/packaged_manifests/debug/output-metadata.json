@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "PACKAGED_MANIFESTS",
+    "kind": "Directory"
+  },
+  "applicationId": "com.guru.fontawesomecomposelib",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "outputFile": "../../merged_manifest/debug/AndroidManifest.xml"
+    }
+  ],
+  "elementType": "File"
+}

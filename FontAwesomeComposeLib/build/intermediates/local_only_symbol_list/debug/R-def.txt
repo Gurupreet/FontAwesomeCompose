@@ -1,0 +1,5 @@
+R_DEF: Internal format may change without notice
+local
+font fa_brands_400
+font fa_regular_400
+font fa_solid_900
