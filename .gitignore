@@ -86,3 +86,5 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+/FontAwesomeComposeLib/build/
+local.properties
