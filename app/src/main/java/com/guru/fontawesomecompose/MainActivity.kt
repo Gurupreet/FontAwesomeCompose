@@ -4,15 +4,12 @@ import FaIcons
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccountBox
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -20,8 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.fontawesomecompose.ui.theme.FontAwesomeComposeTheme
-import com.guru.fontawesomecomposelib.FaIcon
-import com.guru.fontawesomecomposelib.FaIconType
+import com.guru.fontawesomecomposelib.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +62,12 @@ fun SolidIcons() {
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         FaIcon(faIcon = FaIcons.AddressBook)
-        FaIcon(faIcon = FaIcons.Bell)
+        OussFaIcon(
+            faIcon = NewFaIcon.GeneralPurposeIcon(
+                icon = GeneralPurposeIcons.ADDRESS_BOOK
+            ),
+            color = Color.Blue
+        )
         FaIcon(faIcon = FaIcons.CalendarCheck)
         FaIcon(faIcon = FaIcons.Flag)
         FaIcon(faIcon = FaIcons.Folder)
@@ -88,7 +89,13 @@ fun RegularIcons() {
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         FaIcon(faIcon = FaIcons.AddressBook, iconType = FaIconType.REGULAR)
-        FaIcon(faIcon = FaIcons.Bell, iconType = FaIconType.REGULAR)
+        OussFaIcon(
+            faIcon = NewFaIcon.GeneralPurposeIcon(
+                icon = GeneralPurposeIcons.ADDRESS_BOOK,
+                styles = FaIconStyles.REGULAR
+            ),
+            color = Color.Blue
+        )
         FaIcon(faIcon = FaIcons.CalendarCheck, iconType = FaIconType.REGULAR)
         FaIcon(faIcon = FaIcons.Flag, iconType = FaIconType.REGULAR)
         FaIcon(faIcon = FaIcons.Folder, iconType = FaIconType.REGULAR)
@@ -109,12 +116,20 @@ fun BrandIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
-        FaIcon(faIcon = FaIcons.Brands.Airbnb, iconType = FaIconType.BRAND)
+
+        FaIcon(
+            faIcon = FaIcons.Brands.Airbnb,
+            iconType = FaIconType.REGULAR, // using Regular type with brand icons brakes font rendering
+            tint = Color.Red
+        )
+        OussFaIcon(
+            faIcon = NewFaIcon.BrandIcon(icon = OussBrandIcons.AIR_BNB), //No style to configure for Brand icons => API protected by design
+            color = Color.Blue
+        )
         FaIcon(faIcon = FaIcons.Brands.Amazon, iconType = FaIconType.BRAND)
         FaIcon(faIcon = FaIcons.Brands.Alipay, iconType = FaIconType.BRAND)
         FaIcon(faIcon = FaIcons.Brands.Android, iconType = FaIconType.BRAND)
         FaIcon(faIcon = FaIcons.Brands.Bitcoin, iconType = FaIconType.BRAND)
-        FaIcon(faIcon = FaIcons.Brands.Chromecast, iconType = FaIconType.BRAND)
     }
 }
 
