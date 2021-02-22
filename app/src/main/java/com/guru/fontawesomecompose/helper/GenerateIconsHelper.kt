@@ -2,7 +2,6 @@ package com.guru.fontawesomecompose.helper
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import org.json.JSONException
@@ -15,14 +14,14 @@ import java.net.URL
 object GenerateIconsHelper {
 
     private const val faIconsPath = "https://raw.githubusercontent" +
-    ".com/FortAwesome/Font-Awesome/master/metadata/icons.json"
+        ".com/FortAwesome/Font-Awesome/master/metadata/icons.json"
 
     private val iconsJsonUrl = URL(faIconsPath)
 
     suspend fun readIconsJsonFromUrl() {
         withContext(Dispatchers.IO) {
-            iconsJsonUrl?.readStream()?.let {
-                    parseJson(iconsContent = it)
+            iconsJsonUrl.readStream()?.let {
+                parseJson(iconsContent = it)
             }
         }
     }
@@ -38,17 +37,17 @@ internal fun URL.readStream(): String? {
             result.append(line)
         }
         result.toString()
-    } catch (e: IOException){
+    } catch (e: IOException) {
         e.toString()
     }
 }
 
-suspend fun parseJson(iconsContent: String):List<Any>?{
+suspend fun parseJson(iconsContent: String): List<Any>? {
     val list = mutableListOf<Any>()
     val iconUrlPrefix = "https://fontawesome.com/icons/"
     try {
         val icons = JSONObject(iconsContent)
-        var count  = 0;
+        var count = 0
         icons.keys().forEach { key ->
             count++
             val icon = icons.getJSONObject(key)
@@ -72,7 +71,8 @@ suspend fun parseJson(iconsContent: String):List<Any>?{
             }
 
             if (icon.getJSONArray("styles").length() > 1
-                && (icon.getJSONArray("styles").get(1) == "regular")) {
+                && (icon.getJSONArray("styles").get(1) == "regular")
+            ) {
                 val name = modifyNameCasing(key)
                 delay(100)
                 Log.d("json", "   ")
@@ -82,7 +82,7 @@ suspend fun parseJson(iconsContent: String):List<Any>?{
             }
         }
         Log.d("json count", "count $count")
-    } catch (e: JSONException){
+    } catch (e: JSONException) {
         Log.d("Json parse exception", e.toString())
     }
 

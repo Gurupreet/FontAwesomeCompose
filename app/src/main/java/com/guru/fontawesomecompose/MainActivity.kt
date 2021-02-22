@@ -4,6 +4,7 @@ import FaIcons
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -16,18 +17,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.lifecycleScope
-import com.guru.fontawesomecompose.helper.GenerateIconsHelper
 import com.guru.fontawesomecompose.ui.theme.FontAwesomeComposeTheme
-import com.guru.fontawesomecomposelib.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.guru.fontawesomecomposelib.FaIcon
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FontAwesomeComposeTheme(darkTheme = true) {
+            FontAwesomeComposeTheme(darkTheme = isSystemInDarkTheme()) {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Demo()
@@ -68,10 +65,11 @@ fun SolidIcons() {
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         FaIcon(faIcon = FaIcons.AddressBook)
-        FaIcon(faIcon = FaIcons.Angry)
-        FaIcon(faIcon = FaIcons.ArrowAltCircleDown)
+        FaIcon(faIcon = FaIcons.AddressBookRegular)
         FaIcon(faIcon = FaIcons.ChartBar)
-        FaIcon(faIcon = FaIcons.MoneyBillAlt)
+        FaIcon(faIcon = FaIcons.ChartBarRegular)
+        FaIcon(faIcon = FaIcons.Airbnb)
+        FaIcon(faIcon = FaIcons.Amazon)
     }
 }
 
@@ -93,6 +91,8 @@ fun RegularIcons() {
         FaIcon(faIcon = FaIcons.ArrowAltCircleDownRegular)
         FaIcon(faIcon = FaIcons.ChartBarRegular)
         FaIcon(faIcon = FaIcons.MoneyBillAltRegular)
+        FaIcon(faIcon = FaIcons.Airbnb)
+        FaIcon(faIcon = FaIcons.Amazon)
     }
 }
 
@@ -171,6 +171,7 @@ fun ColorIcons() {
         FaIcon(faIcon = FaIcons.Airbnb, tint = Color.DarkGray)
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
