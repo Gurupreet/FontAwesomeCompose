@@ -1,7 +1,6 @@
 package com.guru.fontawesomecomposelib
 
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -30,23 +29,19 @@ fun FaIcon(
     faIcon: FaIconType,
     modifier: Modifier = Modifier,
     size: TextUnit = 24.sp,
-    tint: Color = MaterialTheme.colors.onSurface
+    tint: Color = Color.Unspecified
 ) {
-    val faFont = remember(faIcon) { getFontFamily(faIcon) }
-
     val faTextStyle =
         remember(faIcon) {
             TextStyle(
                 color = tint,
-                fontFamily = faFont,
+                fontFamily = getFontFamily(faIcon),
                 fontSize = size
             )
         }
 
-    val codePoint = remember(faIcon) { faIcon.src.codePointToString() }
-
     BasicText(
-        text = codePoint,
+        text = faIcon.src.codePointToString(),
         modifier = modifier,
         style = faTextStyle,
     )
