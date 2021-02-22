@@ -16,14 +16,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.lifecycleScope
+import com.guru.fontawesomecompose.helper.GenerateIconsHelper
 import com.guru.fontawesomecompose.ui.theme.FontAwesomeComposeTheme
 import com.guru.fontawesomecomposelib.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FontAwesomeComposeTheme(darkTheme = false) {
+            FontAwesomeComposeTheme(darkTheme = true) {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Demo()
@@ -44,6 +48,8 @@ fun Demo() {
         SolidIcons()
         RegularIcons()
         BrandIcons()
+        SizeIcons()
+        ColorIcons()
     }
 }
 
@@ -62,16 +68,10 @@ fun SolidIcons() {
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         FaIcon(faIcon = FaIcons.AddressBook)
-        OussFaIcon(
-            faIcon = NewFaIcon.GeneralPurposeIcon(
-                icon = GeneralPurposeIcons.ADDRESS_BOOK
-            ),
-            color = Color.Blue
-        )
-        FaIcon(faIcon = FaIcons.CalendarCheck)
-        FaIcon(faIcon = FaIcons.Flag)
-        FaIcon(faIcon = FaIcons.Folder)
-        FaIcon(faIcon = FaIcons.Gem)
+        FaIcon(faIcon = FaIcons.Angry)
+        FaIcon(faIcon = FaIcons.ArrowAltCircleDown)
+        FaIcon(faIcon = FaIcons.ChartBar)
+        FaIcon(faIcon = FaIcons.MoneyBillAlt)
     }
 }
 
@@ -88,18 +88,11 @@ fun RegularIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
-        FaIcon(faIcon = FaIcons.AddressBook, iconType = FaIconType.REGULAR)
-        OussFaIcon(
-            faIcon = NewFaIcon.GeneralPurposeIcon(
-                icon = GeneralPurposeIcons.ADDRESS_BOOK,
-                styles = FaIconStyles.REGULAR
-            ),
-            color = Color.Blue
-        )
-        FaIcon(faIcon = FaIcons.CalendarCheck, iconType = FaIconType.REGULAR)
-        FaIcon(faIcon = FaIcons.Flag, iconType = FaIconType.REGULAR)
-        FaIcon(faIcon = FaIcons.Folder, iconType = FaIconType.REGULAR)
-        FaIcon(faIcon = FaIcons.Gem, iconType = FaIconType.REGULAR)
+        FaIcon(faIcon = FaIcons.AddressBookRegular)
+        FaIcon(faIcon = FaIcons.AngryRegular)
+        FaIcon(faIcon = FaIcons.ArrowAltCircleDownRegular)
+        FaIcon(faIcon = FaIcons.ChartBarRegular)
+        FaIcon(faIcon = FaIcons.MoneyBillAltRegular)
     }
 }
 
@@ -116,24 +109,68 @@ fun BrandIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
+        FaIcon(faIcon = FaIcons.Airbnb)
+        FaIcon(faIcon = FaIcons.Amazon)
+        FaIcon(faIcon = FaIcons.AppStore)
+        FaIcon(faIcon = FaIcons.Playstation)
+        FaIcon(faIcon = FaIcons.Snapchat)
+    }
+}
 
-        FaIcon(
-            faIcon = FaIcons.Brands.Airbnb,
-            iconType = FaIconType.REGULAR, // using Regular type with brand icons brakes font rendering
-            tint = Color.Red
-        )
-        OussFaIcon(
-            faIcon = NewFaIcon.BrandIcon(icon = OussBrandIcons.AIR_BNB), //No style to configure for Brand icons => API protected by design
-            color = Color.Blue
-        )
-        FaIcon(faIcon = FaIcons.Brands.Amazon, iconType = FaIconType.BRAND)
-        FaIcon(faIcon = FaIcons.Brands.Alipay, iconType = FaIconType.BRAND)
-        FaIcon(faIcon = FaIcons.Brands.Android, iconType = FaIconType.BRAND)
-        FaIcon(faIcon = FaIcons.Brands.Bitcoin, iconType = FaIconType.BRAND)
+@Composable
+fun SizeIcons() {
+    Text(
+        text = "Brand Icons (450+)",
+        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+        modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+    )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Text("24.sp")
+        Text("28.sp")
+        Text("32.sp")
+        Text("36.sp")
+        Text("48.sp")
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        FaIcon(faIcon = FaIcons.Airbnb, size = 24.sp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 28.sp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 32.sp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 36.sp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 48.sp)
     }
 }
 
 
+@Composable
+fun ColorIcons() {
+    Text(
+        text = "Brand Icons (450+)",
+        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+        modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+    )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.primary)
+        FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.secondary)
+        FaIcon(faIcon = FaIcons.Airbnb, tint = Color.Magenta)
+        FaIcon(faIcon = FaIcons.Airbnb, tint = Color.Yellow)
+        FaIcon(faIcon = FaIcons.Airbnb, tint = Color.DarkGray)
+    }
+}
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
