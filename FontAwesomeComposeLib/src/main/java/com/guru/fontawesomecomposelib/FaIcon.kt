@@ -1,13 +1,10 @@
 package com.guru.fontawesomecomposelib
 
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -39,21 +36,14 @@ fun FaIcon(
     val scaleFactor = LocalConfiguration.current.fontScale
 
     val scaleIndependentFontSize =
-        remember(size) {
-            scaleIndependentFontSize(
-                sizeInDp = size,
-                scaleFactor = scaleFactor
-            )
-        }
+        scaleIndependentFontSize(sizeInDp = size, scaleFactor = scaleFactor)
 
     val faTextStyle =
-        remember(faIcon) {
-            TextStyle(
-                color = tint,
-                fontFamily = getFontFamily(faIcon),
-                fontSize = scaleIndependentFontSize
-            )
-        }
+        TextStyle(
+            color = tint,
+            fontFamily = getFontFamily(faIcon),
+            fontSize = scaleIndependentFontSize
+        )
 
     BasicText(
         text = faIcon.src.codePointToString(),
@@ -77,7 +67,7 @@ private fun getFontFamily(faIconType: FaIconType): FontFamily {
 }
 
 private fun scaleIndependentFontSize(sizeInDp: Dp, scaleFactor: Float): TextUnit {
-    return (sizeInDp.value/scaleFactor).sp
+    return (sizeInDp.value / scaleFactor).sp
 }
 
 private fun Int.codePointToString() = this.toChar().toString()
