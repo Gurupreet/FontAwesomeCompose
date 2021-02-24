@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            FontAwesomeComposeTheme(darkTheme = isSystemInDarkTheme()) {
+            FontAwesomeComposeTheme(darkTheme = false) {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Demo()
@@ -142,11 +142,11 @@ fun SizeIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
-        FaIcon(faIcon = FaIcons.Airbnb, size = 24.sp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 28.sp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 32.sp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 36.sp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 48.sp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 24.dp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 28.dp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 32.dp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 36.dp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 48.dp)
     }
 }
 
