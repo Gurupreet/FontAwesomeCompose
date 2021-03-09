@@ -20,7 +20,7 @@ dependencies {
 
 ### Icon Types
 
-There are mainly 3 types of icons availble as below. 
+There are mainly 3 types of icons available as below. 
 By default all icons are solid (1000+ Icons) or Brands(450+ Icons). Those which also support Regular(150+ Icons) will end with ###Regular as suffix.
   * Solid: 
     FaIcons.ChartBar, FaIcons.AddressBook etc.
