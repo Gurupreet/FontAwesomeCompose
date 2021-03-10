@@ -7,24 +7,11 @@ plugins {
 afterEvaluate {
     publishing {
         publications {
-            // Creates a Maven publication called "release".
             release(MavenPublication) {
-                // Applies the component for the release build variant.
                 from components.release
-
-                // You can then customize attributes of the publication as shown below.
-                groupId = 'com.guru.fontawesomecompose'
-                artifactId = 'final'
-                version = '1.1'
-            }
-            // Creates a Maven publication called “debug”.
-            debug(MavenPublication) {
-                // Applies the component for the debug build variant.
-                from components.debug
-
-                groupId = 'com.guru.fontawesomecompose'
-                artifactId = 'final-debug'
-                version = '1.1'
+                groupId = 'com.guru.compose'
+                artifactId = 'fontawesomecompose'
+                version = '0.1.2'
             }
         }
     }
