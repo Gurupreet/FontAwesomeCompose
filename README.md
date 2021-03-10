@@ -3,6 +3,8 @@
 
 FontAwesoneConmpose is collection of ready to use [Font Awesome](https://fontawesome.com/icons) free icons for Jetpack Compose.
 
+[![](https://jitpack.io/v/Gurupreet/FontAwesomeCompose.svg)](https://jitpack.io/#Gurupreet/FontAwesomeCompose)
+
 Download
 --------
 Add in project build.gradle:
@@ -14,7 +16,7 @@ repositories {
 
 // App build.gradle
 dependencies {
-  implementation 'com.github.Gurupreet.FontAwesomeCompose:final:0.0.2-alpha01'
+  implementation 'com.github.Gurupreet:FontAwesomeCompose:1.0.0-alpha01'
 }
 ```
 
