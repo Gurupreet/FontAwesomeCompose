@@ -3,15 +3,21 @@ package com.guru.fontawesomecompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,17 +40,24 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Demo() {
-    Column(modifier = Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-        Text(
-            text = "Font awesome Icon samples",
-            style = MaterialTheme.typography.h6,
-            modifier = Modifier.padding(16.dp)
-        )
-        SolidIcons()
-        RegularIcons()
-        BrandIcons()
-        SizeIcons()
-        ColorIcons()
+    LazyColumn(modifier = Modifier
+        .fillMaxSize()) {
+        item {
+            Text(
+                text = "Font awesome Icon samples",
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.padding(16.dp)
+            )
+        }
+        item { SolidIcons() }
+        item { RegularIcons() }
+        item { BrandIcons() }
+        item { SizeIcons() }
+        item { ColorIcons() }
+        item { BackgroundClickable() }
+        item { IconsWithAppBar() }
+        item { IconsInBottomNavigation() }
+        item { IconsInListItem() }
     }
 }
 
@@ -63,11 +76,10 @@ fun SolidIcons() {
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         FaIcon(faIcon = FaIcons.AddressBook)
-        FaIcon(faIcon = FaIcons.AddressBookRegular)
+        FaIcon(faIcon = FaIcons.FileCode)
         FaIcon(faIcon = FaIcons.ChartBar)
-        FaIcon(faIcon = FaIcons.ChartBarRegular)
-        FaIcon(faIcon = FaIcons.Airbnb)
-        FaIcon(faIcon = FaIcons.Amazon)
+        FaIcon(faIcon = FaIcons.MoneyBillAlt)
+        FaIcon(faIcon = FaIcons.DotCircle)
     }
 }
 
@@ -85,12 +97,10 @@ fun RegularIcons() {
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         FaIcon(faIcon = FaIcons.AddressBookRegular)
-        FaIcon(faIcon = FaIcons.AngryRegular)
-        FaIcon(faIcon = FaIcons.ArrowAltCircleDownRegular)
+        FaIcon(faIcon = FaIcons.FileCodeRegular)
         FaIcon(faIcon = FaIcons.ChartBarRegular)
         FaIcon(faIcon = FaIcons.MoneyBillAltRegular)
-        FaIcon(faIcon = FaIcons.Airbnb)
-        FaIcon(faIcon = FaIcons.Amazon)
+        FaIcon(faIcon = FaIcons.DotCircleRegular)
     }
 }
 
@@ -118,7 +128,7 @@ fun BrandIcons() {
 @Composable
 fun SizeIcons() {
     Text(
-        text = "Brand Icons (450+)",
+        text = "Icons Sizes",
         style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
         modifier = Modifier.padding(start = 16.dp, top = 16.dp)
     )
@@ -128,11 +138,11 @@ fun SizeIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
-        Text("24.sp")
-        Text("28.sp")
-        Text("32.sp")
-        Text("36.sp")
-        Text("48.sp")
+        Text("12.Dp")
+        Text("16.Dp")
+        Text("24.Dp")
+        Text("32.Dp")
+        Text("48.Dp")
     }
     Row(
         modifier = Modifier
@@ -140,10 +150,10 @@ fun SizeIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
+        FaIcon(faIcon = FaIcons.Airbnb, size = 12.dp)
+        FaIcon(faIcon = FaIcons.Airbnb, size = 16.dp)
         FaIcon(faIcon = FaIcons.Airbnb, size = 24.dp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 28.dp)
         FaIcon(faIcon = FaIcons.Airbnb, size = 32.dp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 36.dp)
         FaIcon(faIcon = FaIcons.Airbnb, size = 48.dp)
     }
 }
@@ -152,7 +162,7 @@ fun SizeIcons() {
 @Composable
 fun ColorIcons() {
     Text(
-        text = "Brand Icons (450+)",
+        text = "Color Icons",
         style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
         modifier = Modifier.padding(start = 16.dp, top = 16.dp)
     )
@@ -165,9 +175,129 @@ fun ColorIcons() {
         FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.primary)
         FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.secondary)
         FaIcon(faIcon = FaIcons.Airbnb, tint = Color.Magenta)
-        FaIcon(faIcon = FaIcons.Airbnb, tint = Color.Yellow)
+        FaIcon(faIcon = FaIcons.Airbnb, tint = Color.Red)
         FaIcon(faIcon = FaIcons.Airbnb, tint = Color.DarkGray)
     }
+}
+
+@Composable
+fun BackgroundClickable() {
+    Text(
+        text = "Clickable",
+        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+        modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+    )
+    val backgroundClickModifier = Modifier
+        .background(color = MaterialTheme.colors.primary, shape = CircleShape)
+        .clickable { }
+        .padding(16.dp)
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
+            shape = CircleShape)) {
+            FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.onPrimary)
+        }
+        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
+            shape = CircleShape)) {
+            FaIcon(faIcon = FaIcons.Linkedin, tint = MaterialTheme.colors.onPrimary)
+        }
+        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
+            shape = CircleShape)) {
+            FaIcon(faIcon = FaIcons.YoutubeSquare, tint = MaterialTheme.colors.onPrimary)
+        }
+        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
+            shape = CircleShape)) {
+            FaIcon(faIcon = FaIcons.AppStore, tint = MaterialTheme.colors.onPrimary)
+        }
+        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
+            shape = CircleShape)) {
+            FaIcon(faIcon = FaIcons.Playstation, tint = MaterialTheme.colors.onPrimary)
+        }
+    }
+}
+
+@Composable
+fun IconsWithAppBar() {
+    TopAppBar(
+        title = { Text(text = "Instagram") },
+        navigationIcon = { FaIcon(faIcon = FaIcons.Instagram, tint = LocalContentColor.current) },
+        actions = {
+            IconButton(onClick = { /*TODO*/ }) {
+                FaIcon(faIcon = FaIcons.HeartRegular, tint = LocalContentColor.current)
+            }
+            IconButton(onClick = { /*TODO*/ }) {
+                FaIcon(faIcon = FaIcons.FacebookMessenger, tint = LocalContentColor.current)
+            }
+        }
+    )
+    Spacer(modifier = Modifier.height(50.dp))
+}
+
+@Composable
+fun IconsInBottomNavigation() {
+    val iconSize = 20.dp
+    BottomNavigation {
+        BottomNavigationItem(
+            icon = { FaIcon(faIcon = FaIcons.Home, size = iconSize, tint = LocalContentColor
+                .current.copy(alpha = LocalContentAlpha.current)) },
+            selected = true,
+            onClick = {},
+            label = { Text(text = "Home") },
+        )
+        BottomNavigationItem(
+            icon = { FaIcon(faIcon = FaIcons.SearchLocation, size = iconSize, tint = LocalContentColor
+                .current.copy(alpha = LocalContentAlpha.current)) },
+            selected = false,
+            onClick = {},
+            label = { Text(text = "Discover") },
+        )
+        BottomNavigationItem(
+            icon = { FaIcon(faIcon = FaIcons.PersonBooth, size = iconSize, tint = LocalContentColor
+                .current.copy(alpha = LocalContentAlpha.current)) },
+            selected = false,
+            onClick = {},
+            label = { Text(text = "Profile") },
+        )
+    }
+    Spacer(modifier = Modifier.height(50.dp))
+}
+
+@Composable
+fun IconsInListItem() {
+        Row(modifier = Modifier.fillMaxWidth()) {
+            Column(modifier = Modifier.weight(1f).padding(8.dp)) {
+                Text(
+                    text = "Title content",
+                    style = MaterialTheme.typography.h6,
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+                Text(
+                    text = "This is subtitle content this can be long or short depending upon the" +
+                        " content.",
+                    style = MaterialTheme.typography.body2,
+                    modifier = Modifier.padding(horizontal = 4.dp)
+                )
+                Row {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        FaIcon(faIcon = FaIcons.CommentAltRegular)
+                    }
+                    IconButton(onClick = { /*TODO*/ }) {
+                        FaIcon(faIcon = FaIcons.SaveRegular)
+                    }
+                    IconButton(onClick = { /*TODO*/ }) {
+                        FaIcon(faIcon = FaIcons.FolderOpenRegular)
+                    }
+                }
+            }
+            IconButton(onClick = {}) {
+                FaIcon(faIcon = FaIcons.HeartRegular, tint = MaterialTheme.colors.onSurface)
+            }
+        }
 }
 
 @Preview(showBackground = true)
