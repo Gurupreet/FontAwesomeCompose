@@ -10,6 +10,8 @@ FontAwesoneConmpose is collection of ready to use [Font Awesome](https://fontawe
 :-------------------------:|:-------------------------: | :-------------------------:
 ![](https://user-images.githubusercontent.com/4903762/111063475-a119c880-84e9-11eb-887d-8984e454f401.jpg)  |  ![](https://user-images.githubusercontent.com/4903762/111063452-7af42880-84e9-11eb-8f9d-26bcd29cbd9d.jpg) | ![](https://user-images.githubusercontent.com/4903762/111063454-7d568280-84e9-11eb-896e-820717902aa0.jpg)
 
+#### Chekout [ComposeCookBook](https://github.com/Gurupreet/ComposeCookBook) for more demo and usage.
+
 
 Download
 --------
@@ -63,9 +65,12 @@ FaIcon(faIcon = FaIcons.Airbnb, size = 48.dp)
 ```
 
 To provide different colors
+
+Disclaimer: It does not uses Material theme LocalColors by default to support different custom design system.
+So you have to pass your colors.
 ```
 FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.primary)
-FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.secondary)
+FaIcon(faIcon = FaIcons.Airbnb, tint = LocalContentColor.current)
 FaIcon(faIcon = FaIcons.Airbnb, tint = Color.Blue)
 ```
 
@@ -81,8 +86,37 @@ FaIcon(
         .background(Color.Green, shape = CircleShape)
         .padding(8.dp)
 )
-```
-## Info
-This icons are based on font awesome free icons version 5.15.0
 
-Library is in early stage and may have breaking changes in coming release.
+// Usage with icon button for already availble backgroud and clickable functionality. 
+IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary, shape = CircleShape)) {
+    FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.onPrimary)
+}
+```
+
+Using with TopAppBar or BottomBar in MaterialTheme
+```
+TopAppBar(
+    title = { Text(text = "Instagram") },
+    navigationIcon = { FaIcon(faIcon = FaIcons.Instagram, tint = LocalContentColor.current) },
+    actions = {
+        IconButton(onClick = { }) {
+            FaIcon(faIcon = FaIcons.HeartRegular, tint = LocalContentColor.current)
+        }
+        IconButton(onClick = { }) {
+            FaIcon(faIcon = FaIcons.FacebookMessenger, tint = LocalContentColor.current)
+        }
+    }
+)
+
+BottomNavigationItem(
+    icon = { FaIcon(faIcon = FaIcons.Home, tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current))},
+    selected = true,
+    onClick = {},
+)
+```
+
+## Library Info
+* This icons are based on font awesome free icons version 5.15.0
+* This does not support pro icons yet. Please reach out if you want to use pro icons in compose.
+* FontAwesome Icon unlike material icon may not be exact square shape. Some icon may be rectangular.
+* Library is in early stage and may have breaking changes in coming release.
