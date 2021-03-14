@@ -5,6 +5,12 @@ FontAwesoneConmpose is collection of ready to use [Font Awesome](https://fontawe
 
 [![](https://jitpack.io/v/Gurupreet/FontAwesomeCompose.svg)](https://jitpack.io/#Gurupreet/FontAwesomeCompose)
 
+### Demo Icon usage
+  FontAwesomeExample            | ComposeCookBook Bottombar           | ComposeCookbook Login Demo
+:-------------------------:|:-------------------------: | :-------------------------:
+![](https://user-images.githubusercontent.com/4903762/111063475-a119c880-84e9-11eb-887d-8984e454f401.jpg)  |  ![](https://user-images.githubusercontent.com/4903762/111063452-7af42880-84e9-11eb-8f9d-26bcd29cbd9d.jpg) | ![](https://user-images.githubusercontent.com/4903762/111063454-7d568280-84e9-11eb-896e-820717902aa0.jpg)
+
+
 Download
 --------
 Add in project build.gradle:
@@ -16,7 +22,7 @@ repositories {
 
 // App build.gradle
 dependencies {
-  implementation 'com.github.Gurupreet:FontAwesomeCompose:1.0.0-alpha01'
+  implementation 'com.github.Gurupreet:FontAwesomeCompose:1.0.1-alpha01'
 }
 ```
 
