@@ -66,8 +66,18 @@ private fun getFontFamily(faIconType: FaIconType): FontFamily {
     }
 }
 
+/** @fun scaleIndependentFontSize: Since FA icons are font that requires Scale pixel
+ * to render and will resize on device font settings. We want to keep icon size
+ * constant to provided DP value so we calculate scale factor and cancel it if Any
+ *
+ * @materialIconOffset: FA icons at same dp taking more space then the Material Icon
+ * Since we will be using both icons side by side this value offset Fa Icons to stay in line
+ * with Material icons sizes.
+ */
+
 private fun scaleIndependentFontSize(sizeInDp: Dp, scaleFactor: Float): TextUnit {
-    return (sizeInDp.value / scaleFactor).sp
+    val materialIconOffset = 3.dp
+    return ((sizeInDp - materialIconOffset).value  / scaleFactor).sp
 }
 
 private fun Int.codePointToString() = this.toChar().toString()

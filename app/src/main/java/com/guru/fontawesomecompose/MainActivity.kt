@@ -12,8 +12,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,6 +53,7 @@ fun Demo() {
         item { SolidIcons() }
         item { RegularIcons() }
         item { BrandIcons() }
+        item { MaterialVsFaIcons() }
         item { SizeIcons() }
         item { ColorIcons() }
         item { BackgroundClickable() }
@@ -128,7 +130,7 @@ fun BrandIcons() {
 @Composable
 fun SizeIcons() {
     Text(
-        text = "Icons Sizes",
+        text = "Icons Sizes (FA vs Material)",
         style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
         modifier = Modifier.padding(start = 16.dp, top = 16.dp)
     )
@@ -150,11 +152,42 @@ fun SizeIcons() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
-        FaIcon(faIcon = FaIcons.Airbnb, size = 12.dp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 16.dp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 24.dp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 32.dp)
-        FaIcon(faIcon = FaIcons.Airbnb, size = 48.dp)
+        FaIcon(faIcon = FaIcons.HeartRegular, size = 12.dp)
+        FaIcon(faIcon = FaIcons.Star, size = 16.dp)
+        FaIcon(faIcon = FaIcons.Trash, size = 24.dp)
+        FaIcon(faIcon = FaIcons.HeartRegular, size = 32.dp)
+        FaIcon(faIcon = FaIcons.HeartRegular, size = 48.dp)
+    }
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Icon(
+            imageVector = Icons.Default.FavoriteBorder,
+            contentDescription = null,
+            modifier = Modifier.size(12.dp)
+        )
+        Icon(
+            imageVector = Icons.Default.Star,
+            contentDescription = null,
+            modifier = Modifier.size(16.dp)
+        )
+        Icon(
+            imageVector = Icons.Default.Delete,
+            contentDescription = null,
+        )
+        Icon(
+            imageVector = Icons.Default.FavoriteBorder,
+            contentDescription = null,
+            modifier = Modifier.size(32.dp)
+        )
+        Icon(
+            imageVector = Icons.Default.FavoriteBorder,
+            contentDescription = null,
+            modifier = Modifier.size(48.dp)
+        )
     }
 }
 
@@ -240,24 +273,23 @@ fun IconsWithAppBar() {
 
 @Composable
 fun IconsInBottomNavigation() {
-    val iconSize = 20.dp
     BottomNavigation {
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.Home, size = iconSize, tint = LocalContentColor
+            icon = { FaIcon(faIcon = FaIcons.Home, tint = LocalContentColor
                 .current.copy(alpha = LocalContentAlpha.current)) },
             selected = true,
             onClick = {},
             label = { Text(text = "Home") },
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.SearchLocation, size = iconSize, tint = LocalContentColor
+            icon = { FaIcon(faIcon = FaIcons.SearchLocation, tint = LocalContentColor
                 .current.copy(alpha = LocalContentAlpha.current)) },
             selected = false,
             onClick = {},
             label = { Text(text = "Discover") },
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.PersonBooth, size = iconSize, tint = LocalContentColor
+            icon = { FaIcon(faIcon = FaIcons.PersonBooth, tint = LocalContentColor
                 .current.copy(alpha = LocalContentAlpha.current)) },
             selected = false,
             onClick = {},
@@ -270,7 +302,9 @@ fun IconsInBottomNavigation() {
 @Composable
 fun IconsInListItem() {
         Row(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier.weight(1f).padding(8.dp)) {
+            Column(modifier = Modifier
+                .weight(1f)
+                .padding(8.dp)) {
                 Text(
                     text = "Title content",
                     style = MaterialTheme.typography.h6,
@@ -298,6 +332,37 @@ fun IconsInListItem() {
                 FaIcon(faIcon = FaIcons.HeartRegular, tint = MaterialTheme.colors.onSurface)
             }
         }
+}
+
+@Composable
+fun MaterialVsFaIcons() {
+    Text(
+        text = "FaIcon vs Material Icons",
+        style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
+        modifier = Modifier.padding(start = 16.dp, top = 16.dp)
+    )
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Column {
+            FaIcon(faIcon = FaIcons.HeartRegular)
+            Spacer(modifier = Modifier.height(8.dp))
+            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = null)
+        }
+        Column {
+            FaIcon(faIcon = FaIcons.Envelope)
+            Spacer(modifier = Modifier.height(8.dp))
+            Icon(imageVector = Icons.Default.Email, contentDescription = null)
+        }
+        Column {
+            FaIcon(faIcon = FaIcons.CheckCircle)
+            Spacer(modifier = Modifier.height(8.dp))
+            Icon(imageVector = Icons.Filled.CheckCircle, contentDescription = null)
+        }
+    }
 }
 
 @Preview(showBackground = true)
