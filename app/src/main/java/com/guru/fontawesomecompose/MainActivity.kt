@@ -275,8 +275,7 @@ fun IconsWithAppBar() {
 fun IconsInBottomNavigation() {
     BottomNavigation {
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.Home, tint = LocalContentColor
-                .current.copy(alpha = LocalContentAlpha.current)) },
+            icon = { FaIcon(faIcon = FaIcons.Home, tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current))},
             selected = true,
             onClick = {},
             label = { Text(text = "Home") },
