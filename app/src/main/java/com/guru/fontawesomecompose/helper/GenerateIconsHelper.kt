@@ -10,6 +10,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.URL
+import java.util.*
 
 object GenerateIconsHelper {
 
@@ -42,7 +43,7 @@ internal fun URL.readStream(): String? {
     }
 }
 
-suspend fun parseJson(iconsContent: String): List<Any>? {
+suspend fun parseJson(iconsContent: String): List<Any> {
     val list = mutableListOf<Any>()
     val iconUrlPrefix = "https://fontawesome.com/icons/"
     try {
@@ -95,11 +96,13 @@ fun modifyNameCasing(name: String): String {
         val subNames = name.split("-")
         val newName = StringBuilder()
         subNames.forEach {
-            newName.append(it.capitalize())
+            newName.append(it.replaceFirstChar { char ->
+                if (char.isLowerCase()) char.titlecase(Locale.getDefault()) else char.toString()
+            })
         }
 
         return newName.toString()
     }
 
-    return name.capitalize()
+    return name.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 }
