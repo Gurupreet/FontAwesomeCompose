@@ -2226,6 +2226,10 @@ object FaIcons {
     // Solid icon : FistRaised
     val FistRaised = SolidIcon(0xf6de)
 
+    // https://fontawesome.com/icons/500px?style=brands
+    // Brands icon : 500px
+    val FiveHundredPX = BrandIcon(0xf26e)
+
     // https://fontawesome.com/icons/flag?style=solid
     // Solid icon : Flag
     val Flag = SolidIcon(0xf024)
