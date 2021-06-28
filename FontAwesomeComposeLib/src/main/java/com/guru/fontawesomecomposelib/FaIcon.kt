@@ -55,13 +55,13 @@ fun FaIcon(
 private fun getFontFamily(faIconType: FaIconType): FontFamily {
     return when (faIconType) {
         is FaIconType.BrandIcon -> FontFamily(
-            Font(R.font.fa_brands_400)
+            Font(resId = R.font.fa_brands_400)
         )
         is FaIconType.SolidIcon -> FontFamily(
-            Font(R.font.fa_solid_900)
+            Font(resId = R.font.fa_solid_900)
         )
         is FaIconType.RegularIcon -> FontFamily(
-            Font(R.font.fa_regular_400)
+            Font(resId = R.font.fa_regular_400)
         )
     }
 }
