@@ -87,7 +87,7 @@ FaIcon(
         .padding(8.dp)
 )
 
-// Usage with icon button for already availble backgroud and clickable functionality. 
+// Usage with icon button for already available backgroud and clickable functionality. 
 IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary, shape = CircleShape)) {
     FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.onPrimary)
 }
