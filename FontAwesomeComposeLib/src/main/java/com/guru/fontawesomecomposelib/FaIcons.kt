@@ -1,3 +1,5 @@
+package com.guru.fontawesomecomposelib
+
 import com.guru.fontawesomecomposelib.FaIconType.*
 
 

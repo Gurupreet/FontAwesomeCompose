@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.guru.fontawesomecompose.ui.theme.FontAwesomeComposeTheme
 import com.guru.fontawesomecomposelib.FaIcon
+import com.guru.fontawesomecomposelib.FaIcons
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -220,10 +221,6 @@ fun BackgroundClickable() {
         style = MaterialTheme.typography.h6.copy(fontSize = 14.sp),
         modifier = Modifier.padding(start = 16.dp, top = 16.dp)
     )
-    val backgroundClickModifier = Modifier
-        .background(color = MaterialTheme.colors.primary, shape = CircleShape)
-        .clickable { }
-        .padding(16.dp)
 
     Row(
         modifier = Modifier
