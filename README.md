@@ -24,7 +24,7 @@ repositories {
 
 // App build.gradle
 dependencies {
-  implementation 'com.github.Gurupreet:FontAwesomeCompose:1.0.1-alpha01'
+  implementation 'com.github.Gurupreet:FontAwesomeCompose:1.0.0'
 }
 ```
 
