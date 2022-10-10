@@ -11,18 +11,18 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.guru.compose'
                 artifactId = 'fontawesomecompose'
-                version = '1.1.0'
+                version = '1.1.1'
             }
         }
     }
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -51,8 +51,8 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
+    namespace 'com.guru.fontawesomecomposelib'
 }
 
 dependencies {
