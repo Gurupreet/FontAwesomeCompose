@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.sp
  * @param tint By default it uses the onSurface color of the theme if not provided
  * You can provide any color you want to set tint for
  */
-
 @Composable
 fun FaIcon(
     faIcon: FaIconType,
@@ -74,7 +73,6 @@ private fun getFontFamily(faIconType: FaIconType): FontFamily {
  * Since we will be using both icons side by side this value offset Fa Icons to stay in line
  * with Material icons sizes.
  */
-
 private fun scaleIndependentFontSize(sizeInDp: Dp, scaleFactor: Float): TextUnit {
     val materialIconOffset = 3.dp
     return ((sizeInDp - materialIconOffset).value  / scaleFactor).sp
