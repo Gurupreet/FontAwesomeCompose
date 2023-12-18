@@ -4,21 +4,36 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.Email
-import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,8 +57,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Demo() {
-    LazyColumn(modifier = Modifier
-        .fillMaxSize()) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
         item {
             Text(
                 text = "Font awesome Icon samples",
@@ -81,8 +98,8 @@ fun SolidIcons() {
         FaIcon(faIcon = FaIcons.AddressBook)
         FaIcon(faIcon = FaIcons.FileCode)
         FaIcon(faIcon = FaIcons.ChartBar)
-        FaIcon(faIcon = FaIcons.MoneyBillAlt)
-        FaIcon(faIcon = FaIcons.DotCircle)
+        FaIcon(faIcon = FaIcons.MoneyBill1)
+        FaIcon(faIcon = FaIcons.CircleDot)
     }
 }
 
@@ -102,8 +119,8 @@ fun RegularIcons() {
         FaIcon(faIcon = FaIcons.AddressBookRegular)
         FaIcon(faIcon = FaIcons.FileCodeRegular)
         FaIcon(faIcon = FaIcons.ChartBarRegular)
-        FaIcon(faIcon = FaIcons.MoneyBillAltRegular)
-        FaIcon(faIcon = FaIcons.DotCircleRegular)
+        FaIcon(faIcon = FaIcons.MoneyBill1Regular)
+        FaIcon(faIcon = FaIcons.CircleDotRegular)
     }
 }
 
@@ -122,9 +139,9 @@ fun BrandIcons() {
     ) {
         FaIcon(faIcon = FaIcons.Airbnb)
         FaIcon(faIcon = FaIcons.Amazon)
-        FaIcon(faIcon = FaIcons.AppStore)
-        FaIcon(faIcon = FaIcons.Playstation)
-        FaIcon(faIcon = FaIcons.Snapchat)
+        FaIcon(faIcon = FaIcons.GooglePlay)
+        FaIcon(faIcon = FaIcons.PlayStation)
+        FaIcon(faIcon = FaIcons.WhatsApp)
     }
 }
 
@@ -228,25 +245,45 @@ fun BackgroundClickable() {
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
-        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
-            shape = CircleShape)) {
+        IconButton(
+            onClick = { }, modifier = Modifier.background(
+                MaterialTheme.colors.primary,
+                shape = CircleShape
+            )
+        ) {
             FaIcon(faIcon = FaIcons.Airbnb, tint = MaterialTheme.colors.onPrimary)
         }
-        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
-            shape = CircleShape)) {
-            FaIcon(faIcon = FaIcons.Linkedin, tint = MaterialTheme.colors.onPrimary)
+        IconButton(
+            onClick = { }, modifier = Modifier.background(
+                MaterialTheme.colors.primary,
+                shape = CircleShape
+            )
+        ) {
+            FaIcon(faIcon = FaIcons.LinkedIn, tint = MaterialTheme.colors.onPrimary)
         }
-        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
-            shape = CircleShape)) {
-            FaIcon(faIcon = FaIcons.YoutubeSquare, tint = MaterialTheme.colors.onPrimary)
+        IconButton(
+            onClick = { }, modifier = Modifier.background(
+                MaterialTheme.colors.primary,
+                shape = CircleShape
+            )
+        ) {
+            FaIcon(faIcon = FaIcons.SquareYoutube, tint = MaterialTheme.colors.onPrimary)
         }
-        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
-            shape = CircleShape)) {
+        IconButton(
+            onClick = { }, modifier = Modifier.background(
+                MaterialTheme.colors.primary,
+                shape = CircleShape
+            )
+        ) {
             FaIcon(faIcon = FaIcons.AppStore, tint = MaterialTheme.colors.onPrimary)
         }
-        IconButton(onClick = { }, modifier = Modifier.background(MaterialTheme.colors.primary,
-            shape = CircleShape)) {
-            FaIcon(faIcon = FaIcons.Playstation, tint = MaterialTheme.colors.onPrimary)
+        IconButton(
+            onClick = { }, modifier = Modifier.background(
+                MaterialTheme.colors.primary,
+                shape = CircleShape
+            )
+        ) {
+            FaIcon(faIcon = FaIcons.PlayStation, tint = MaterialTheme.colors.onPrimary)
         }
     }
 }
@@ -272,21 +309,34 @@ fun IconsWithAppBar() {
 fun IconsInBottomNavigation() {
     BottomNavigation {
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.Home, tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current))},
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.House,
+                    tint = LocalContentColor.current.copy(alpha = LocalContentAlpha.current)
+                )
+            },
             selected = true,
             onClick = {},
             label = { Text(text = "Home") },
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.SearchLocation, tint = LocalContentColor
-                .current.copy(alpha = LocalContentAlpha.current)) },
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.MagnifyingGlassLocation, tint = LocalContentColor
+                        .current.copy(alpha = LocalContentAlpha.current)
+                )
+            },
             selected = false,
             onClick = {},
             label = { Text(text = "Discover") },
         )
         BottomNavigationItem(
-            icon = { FaIcon(faIcon = FaIcons.PersonBooth, tint = LocalContentColor
-                .current.copy(alpha = LocalContentAlpha.current)) },
+            icon = {
+                FaIcon(
+                    faIcon = FaIcons.PersonBooth, tint = LocalContentColor
+                        .current.copy(alpha = LocalContentAlpha.current)
+                )
+            },
             selected = false,
             onClick = {},
             label = { Text(text = "Profile") },
@@ -297,37 +347,39 @@ fun IconsInBottomNavigation() {
 
 @Composable
 fun IconsInListItem() {
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Column(modifier = Modifier
+    Row(modifier = Modifier.fillMaxWidth()) {
+        Column(
+            modifier = Modifier
                 .weight(1f)
-                .padding(8.dp)) {
-                Text(
-                    text = "Title content",
-                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier.padding(horizontal = 4.dp)
-                )
-                Text(
-                    text = "This is subtitle content this can be long or short depending upon the" +
+                .padding(8.dp)
+        ) {
+            Text(
+                text = "Title content",
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
+            Text(
+                text = "This is subtitle content this can be long or short depending upon the" +
                         " content.",
-                    style = MaterialTheme.typography.body2,
-                    modifier = Modifier.padding(horizontal = 4.dp)
-                )
-                Row {
-                    IconButton(onClick = { /*TODO*/ }) {
-                        FaIcon(faIcon = FaIcons.CommentAltRegular)
-                    }
-                    IconButton(onClick = { /*TODO*/ }) {
-                        FaIcon(faIcon = FaIcons.SaveRegular)
-                    }
-                    IconButton(onClick = { /*TODO*/ }) {
-                        FaIcon(faIcon = FaIcons.FolderOpenRegular)
-                    }
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(horizontal = 4.dp)
+            )
+            Row {
+                IconButton(onClick = { /*TODO*/ }) {
+                    FaIcon(faIcon = FaIcons.CommentRegular)
+                }
+                IconButton(onClick = { /*TODO*/ }) {
+                    FaIcon(faIcon = FaIcons.BookmarkRegular)
+                }
+                IconButton(onClick = { /*TODO*/ }) {
+                    FaIcon(faIcon = FaIcons.FolderOpenRegular)
                 }
             }
-            IconButton(onClick = {}) {
-                FaIcon(faIcon = FaIcons.HeartRegular, tint = MaterialTheme.colors.onSurface)
-            }
         }
+        IconButton(onClick = {}) {
+            FaIcon(faIcon = FaIcons.HeartRegular, tint = MaterialTheme.colors.onSurface)
+        }
+    }
 }
 
 @Composable
@@ -354,7 +406,7 @@ fun MaterialVsFaIcons() {
             Icon(imageVector = Icons.Default.Email, contentDescription = null)
         }
         Column {
-            FaIcon(faIcon = FaIcons.CheckCircle)
+            FaIcon(faIcon = FaIcons.CircleCheck)
             Spacer(modifier = Modifier.height(8.dp))
             Icon(imageVector = Icons.Filled.CheckCircle, contentDescription = null)
         }
